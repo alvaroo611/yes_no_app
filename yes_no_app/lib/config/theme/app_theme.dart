@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 const Color customColor = Color.fromRGBO(200, 23, 120, 0.612);
 List<Color> colorThemes = [
   Colors.blue,
@@ -9,14 +8,22 @@ List<Color> colorThemes = [
   Colors.orange,
   Colors.pink
 ];
-
-class AppTheme {
+class AppTheme
+{
+  AppTheme({this.selectedColor=0})
+    :assert(selectedColor >=0 && selectedColor<= colorThemes.length-1 ,
+    "Color inexistente");
   final int selectedColor;
-  AppTheme({this.selectedColor = 0})
-      : assert(selectedColor >= 0 && selectedColor < colorThemes.length,
-            'Colors must be between 0 and 7');
-  ThemeData theme() {
+  ThemeData theme()
+  {
     return ThemeData(
-        useMaterial3: true, colorSchemeSeed: colorThemes[selectedColor]);
+      useMaterial3: true,
+      colorSchemeSeed: colorThemes [selectedColor]
+    
+    );
+      
+
+
   }
+
 }
